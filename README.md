@@ -162,3 +162,38 @@ db.createCollection("code")
 db.code.renameCollection("DentedCode")
 <!-- delete collection  -->
 db.DentedCode.drop()
+
+<!-- more nested queries -->
+db.product.insertMany([
+	{name:"Aashis", id:123, email:"aashis@gmail.com"},
+	{name:"Swornim",class:4,id:230},
+	{name:"eee",email:"aashis@123",task:"code"},
+	{name:"bbb",email:"aashis@123",task:"code"},
+	{name:"fff",email:"aashis@123",task:"code"},
+	{name:"ddd",email:"aashis@123",task:"code"},
+	{name:"ccc",email:"aashis@123",task:"code"},
+	{name:"fffg",email:"aashis@123",task:"code"}
+])
+<!-- sort according to id -->
+db.product.find().sort({key:1}).skip(1)
+
+<!-- $and will check the condition  -->
+db.product.find({
+    $and:[
+        {email: "aashis@123"},
+        {task: "code"}
+    ]
+})
+<!-- $or will check the conditions  -->
+
+db.product.find({
+    $and:[
+            {email: "aashis@123"},
+            {task: "code"},
+        {$or:[
+                {name:"aaa"},
+                {name:"Aashis"}
+            ]}
+
+        ]   
+})
