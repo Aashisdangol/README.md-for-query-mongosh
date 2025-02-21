@@ -184,7 +184,7 @@ db.product.find({
         {task: "code"}
     ]
 })
-<!-- $or will check the conditions  -->
+<!-- $or will combine conditions one must be true  -->
 
 db.product.find({
     $and:[
